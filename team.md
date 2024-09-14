@@ -16,7 +16,7 @@ Hi, I'm Linchen Xu from China. This is my first semester studying in BU. I used 
 
 ## Zhen Cao
 
-
+Hi, I'm Zhen Cao from China. This is my second year studying at BU. I am interested in generative AI and my current research focus is on how generative AI can contribute to the medical field. 
 
 
 
