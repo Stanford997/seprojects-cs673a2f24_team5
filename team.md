@@ -13,3 +13,4 @@ Hi, I'm Lin Ma from the Earth. I'm glad to take this course with so many brillia
 Hi, I'm Zhen Cao from China. This is my second year studying at BU. I am interested in generative AI and my current research focus is on how generative AI can contribute to the medical field.
 
 ## Andy Zhou
+Hi, I'm Zihan Zhou from China. This is my second year at BU. I have worked on AI chess and RAG before, my research focus is on data analysis.
