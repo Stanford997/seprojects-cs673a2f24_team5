@@ -16,5 +16,5 @@ Hi, I'm Zhen Cao from China. This is my second year studying at BU. I am interes
 Hi, I'm Zihan Zhou from China. This is my second year at BU. I have worked on AI chess and RAG before, my research focus is on data analysis.
 
 ## Haochen Sun
-Hi, I'm Haochen Sun from China. This is my last semester in BU. I major in CS, and my concentration is DS.
+Hi, I'm Haochen Sun from China. This is my last semester in BU. I major in CS, and my concentration is DS. 
 
