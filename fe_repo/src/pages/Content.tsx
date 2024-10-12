@@ -30,7 +30,7 @@ export const Content = ({messages}: IContentProps) => {
           }}
         >
           <div
-            className="max-w-xs p-2 rounded-lg w-full"
+            className="p-2 rounded-lg w-2/3"
             style={{
               padding: '8px',
               borderRadius: '12px',

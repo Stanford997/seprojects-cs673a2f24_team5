@@ -1,7 +1,7 @@
 import {UploadIcon} from "../icons"
 import {Textarea} from '../components'
 import {useState} from "react";
-import {uploadFile} from "../functions/api.ts";
+import {uploadFile} from "../functions/api";
 
 interface IChatBoxProps {
   onSendMessage: (message: string) => void;

@@ -17,5 +17,5 @@ test('uploadFile', () => {
 
 test('analyze', () => {
   // make sure message is always returned
-  expect(analyze('hello world')).toBeDefined();
+  expect(analyze('hello world', {text: 'test', isUser: true}, () => {})).toBeDefined();
 })
