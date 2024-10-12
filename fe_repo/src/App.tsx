@@ -70,8 +70,8 @@ function App() {
               </>
             ))
           }
-          <div className="font-bold">Total
-            Score: {Object.values(analysis.scores).reduce((acc, cur) => acc + cur, 0)}</div>
+          <div className="font-bold">Total Score:
+            {Object.values(analysis.scores).reduce((acc, cur) => acc + cur, 0)}</div>
         </>
       );
     }
