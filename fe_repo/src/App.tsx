@@ -1,15 +1,19 @@
 import {ChatBox, Content, Header} from './pages'
-import {useState} from "react";
-import {analyze, sendMessage} from "./functions/api.ts";
+import {ReactNode, useState} from "react";
+import {analyze, sendMessage} from "./functions/api";
 
 export type Message = {
-  text: string,
+  text: string | ReactNode,
   isUser: boolean,
 }
 
 function App() {
 
   const [messages, setMessages] = useState<Message[]>([])
+
+  const refreshMessages = () => {
+    setMessages((messages) => [...messages]);
+  }
 
   const onSendMessage = (message: string) => {
     const sendingMessage = {
@@ -50,7 +54,7 @@ function App() {
       // handle message sent, update conversation section
       // const response = {text: sendMessage(message), isUser: false}
       // remove sending prompt message
-      sendingMessage.text = analyze(jd);
+      analyze(jd, sendingMessage, refreshMessages);
       setMessages((messages) => [...messages]);
     }, 1000);
   }
