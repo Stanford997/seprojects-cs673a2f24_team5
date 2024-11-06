@@ -4,9 +4,13 @@ from flask_cors import CORS
 from configs.database import get_resume_database
 from modules.evaluator import evaluate_resume, evaluate_resume_with_jd
 from modules.upload import upload_parse_resume
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 
 app = Flask(__name__)
 CORS(app)
+
+GOOGLE_CLIENT_ID = '788436279160-4vqq0leogg079merpfgfgnnimlvo8mhh.apps.googleusercontent.com'
 
 # Test MongoDB connection
 try:
@@ -26,6 +30,35 @@ def upload_resume():
     # Vector the resume text
     return upload_parse_resume(request, resume_collection)
 
+@app.route('/login', methods=['POST'])
+def login():
+    token = request.json.get('id_token')
+    print(token)
+    if not token:
+        return jsonify({'status': 'error', 'message': 'ID token is missing'}), 400
+
+    try:
+        # Verify the token with Google
+        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), GOOGLE_CLIENT_ID)
+        
+        if idinfo['aud'] != GOOGLE_CLIENT_ID:
+            return jsonify({'status': 'error', 'message': 'Token audience mismatch'}), 400
+
+        # Token is valid, extract user information
+        userid = idinfo['sub']
+        email = idinfo['email']
+        name = idinfo.get('name', 'No name available')
+
+        # Create a session or JWT for the user
+        #session['user'] = {'userid': userid, 'email': email, 'name': name}
+
+        # Respond with success and optional user data
+        return jsonify({'status': 'success', 'email': email, 'name': name}), 200
+
+    except ValueError:
+        # Token verification failed
+        print(f"Error verifying token: {str(e)}")
+        return jsonify({'status': 'error', 'message': 'Invalid ID token'}), 400
 
 @app.route('/resume_evaluate', methods=['POST'])
 def resume_evaluate():
