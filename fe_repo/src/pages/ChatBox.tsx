@@ -63,54 +63,53 @@ export const ChatBox = ({ onSendMessage, onAnalyze }: IChatBoxProps) => {
       }
       {/* icon row */
       }
-      <div className="flex justify-start gap-2 mb-2">
-        <div
-          style={{ width: '64px', display: 'flex', justifyContent: 'center', cursor: 'pointer' }}
-          onClick={() => {
-            // Upload files
-            const handleFiles = (event: Event) => {
-              const files = (event.target as HTMLInputElement)?.files;
-              if (!files || files.length === 0) return;
-              const file = files[0];
-              if (file) {
-                // upload if file is valid
-                uploadFile(file);
-              }
-            }
-
-            const input = document.createElement("input");
-            input.type = 'file';
-            input.accept = '.pdf';
-            input.onchange = handleFiles;
-            input.click();
-          }}
-        >
-          <UploadIcon />
+        <div className="flex justify-start gap-2 mb-2">
+            <div
+                style={{width: '64px', display: 'flex', justifyContent: 'center', cursor: 'pointer'}}
+                onClick={() => {
+                    document.getElementById('fileInput').click();
+                }}
+            >
+                <UploadIcon/>
+                <input
+                    id="fileInput"
+                    type="file"
+                    accept=".pdf"
+                    style={{display: 'none'}}
+                    onChange={(event) => {
+                        const files = event.target.files;
+                        if (!files || files.length === 0) return;
+                        const file = files[0];
+                        if (file) {
+                            uploadFile(file);
+                        }
+                    }}
+                />
+            </div>
+            <button
+                className="cursor-pointer px-4 py-2 rounded-full bg-blue-500 text-white text-sm flex items-center gap-1 hover:bg-blue-600 transition"
+                onClick={() => setShowPrompt(true)}
+            >
+                <span className="text-base">📄</span> Analyze my resume
+            </button>
+            {/*🛈 /!* Example icon - you can use actual icons here *!/*/}
+            {/*💼 /!* Example icon for interview *!/*/}
         </div>
-        <button
-          className="cursor-pointer px-4 py-2 rounded-full bg-blue-500 text-white text-sm flex items-center gap-1 hover:bg-blue-600 transition"
-          onClick={() => setShowPrompt(true)}
-        >
-          <span className="text-base">📄</span> Analyze my resume
-        </button>
-        {/*🛈 /!* Example icon - you can use actual icons here *!/*/}
-        {/*💼 /!* Example icon for interview *!/*/}
-      </div>
-      {/* input row */}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Textarea
-          className="flex-1"
-          value={message}
-          onChange={(e) => setMessage(xss(e.target.value))}
-          onKeyUp={(e) => {
-            // listen for enter key
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              handleSend();
-            }
-          }}
-        />
-      </div>
+        {/* input row */}
+        <div style={{display: 'flex', alignItems: 'center'}}>
+            <Textarea
+                className="flex-1"
+                value={message}
+                onChange={(e) => setMessage(xss(e.target.value))}
+                onKeyUp={(e) => {
+                    // listen for enter key
+                    if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSend();
+                    }
+                }}
+            />
+        </div>
     </div>
   )
 }
