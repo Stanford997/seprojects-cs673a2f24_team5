@@ -6,11 +6,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-FRONTEND_URL = "http://localhost:3000"
-API_URL = "http://127.0.0.1:5000"
+FRONTEND_URL = "http://localhost:3001"
+API_URL = "http://127.0.0.1:5001"
 
 options = Options()
-options.add_argument("--headless")
+# options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
 driver.get(FRONTEND_URL)
 wait = WebDriverWait(driver, 10)
