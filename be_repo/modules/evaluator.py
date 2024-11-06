@@ -123,7 +123,10 @@ def extract_scores_and_explanation(evaluation):
 
 
 def compute_correlated_score(score, correlation):
-    correlated_score = [score[i] * correlation[i] * 2 for i in range(4)]
+    max_ranges = [SCORING_CRITERIA['Education'], SCORING_CRITERIA['Project and Work Experience'],
+                  SCORING_CRITERIA['Skills and Certifications'], SCORING_CRITERIA['Soft Skills']]
+    correlated_score = [min(int(score[i] * correlation[i] ** 2 * 2), max_ranges[i]) for i in range(4)]
+
     return correlated_score
 
 
@@ -232,7 +235,7 @@ def evaluate_resume_with_jd(resume_text, jd_text):
     # Extract correlation scores and original scores into arrays and compute correlated_score
     correlation_array = list(correlation['correlation'].values())
     scores_array = list(evaluated_resume_with_jd['scores'].values())
-    correlated_score = compute_correlated_score(correlation_array, scores_array)
+    correlated_score = compute_correlated_score(scores_array, correlation_array)
 
     # Update the scores and explanations in the evaluated resume based on correlation analysis
     fields_to_replace = ['Education', 'Project and Work Experience', 'Skills and Certifications', 'Soft Skills']
