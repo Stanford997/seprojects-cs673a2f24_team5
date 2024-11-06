@@ -30,11 +30,18 @@ def upload_parse_resume(request, resume_collection):
             "user_id": user_id,
             "resume_text": resume_text
         }
-        result = resume_collection.insert_one(new_resume)
+        result = resume_collection.replace_one({"user_id": user_id}, new_resume, upsert=True)
+
+        if result.upserted_id:
+            resume_id = str(result.upserted_id)
+            message = "File successfully uploaded and parsed"
+        else:
+            resume_id = str(resume_collection.find_one({"user_id": user_id})["_id"])
+            message = "Existing resume updated successfully"
 
         return jsonify({
-            "message": "File successfully uploaded and parsed",
-            "resume_id": str(result.inserted_id)
+            "message": message,
+            "resume_id": resume_id
         }), 200
     else:
         return jsonify({"error": "Invalid file format, only PDF is allowed"}), 400
