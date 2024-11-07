@@ -29,7 +29,7 @@ for option in options:
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 driver.get(FRONTEND_URL)
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 60)
 
 try:
     wait.until(
