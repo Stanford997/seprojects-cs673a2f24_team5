@@ -57,7 +57,7 @@ for option in options:
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get(FRONTEND_URL)
-wait = WebDriverWait(driver, 15)
+wait = WebDriverWait(driver, 60)
 
 try:
     wait.until(
@@ -72,7 +72,6 @@ try:
     upload_div = driver.find_element(By.CSS_SELECTOR, "div[style*='cursor: pointer'][style*='display: flex']")
     # upload_div.click()
 
-    wait = WebDriverWait(driver, 10)
     file_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='file']")))
 
     file_path = os.path.join(os.path.dirname(__file__), 'test_resume.pdf')
