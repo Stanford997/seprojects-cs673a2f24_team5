@@ -31,7 +31,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest pytest-cov
-          
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Lint with flake8
@@ -95,4 +94,5 @@ jobs:
       - name: Commit & Push changes to Readme
         uses: ad-m/github-push-action@master
         with:
+          message: Update coverage on Readme
           github_token: ${{ secrets.GITHUB_TOKEN }}
