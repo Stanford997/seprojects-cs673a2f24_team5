@@ -9,7 +9,7 @@ interface IChatBoxProps {
   onAnalyze: (jd: string) => void;
 }
 
-export const ChatBox = ({ onSendMessage, onAnalyze }: IChatBoxProps) => {
+export const ChatBox = ({onSendMessage, onAnalyze}: IChatBoxProps) => {
 
   const [message, setMessage] = useState("");
   const [showPrompt, setShowPrompt] = useState(false);
