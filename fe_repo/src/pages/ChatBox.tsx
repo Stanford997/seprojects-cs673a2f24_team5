@@ -67,7 +67,7 @@ export const ChatBox = ({ onSendMessage, onAnalyze }: IChatBoxProps) => {
             <div
                 style={{width: '64px', display: 'flex', justifyContent: 'center', cursor: 'pointer'}}
                 onClick={() => {
-                    document.getElementById('fileInput').click();
+                    document.getElementById('fileInput')?.click();
                 }}
             >
                 <UploadIcon/>
