@@ -1,6 +1,9 @@
 # CVCoach
 
 [![CI for FE](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_fe.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_fe.yml)
+[![CI for BE](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_be.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_be.yml)
+[![CI for E2E](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_e2e.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/ci_e2e.yml)
+
 [![CD Pipeline](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
