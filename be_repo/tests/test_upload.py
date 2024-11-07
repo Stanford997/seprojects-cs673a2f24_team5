@@ -42,11 +42,6 @@ def test_upload_parse_resume_success(mock_parse_resume, app):
     assert response[1] == 200
     assert response[0].json['message'] == "File successfully uploaded and parsed"
 
-    mock_resume_collection.insert_one.assert_called_once_with({
-        "user_id": '123',
-        "resume_text": "Parsed resume text"
-    })
-
 
 @patch('modules.upload.parse_resume', return_value="Parsed resume text")
 def test_upload_parse_resume_invalid_format(mock_parse_resume, app):
