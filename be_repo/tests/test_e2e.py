@@ -1,4 +1,5 @@
 from selenium import webdriver
+import chromedriver_autoinstaller
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 from selenium.webdriver.common.by import By
@@ -11,25 +12,48 @@ import time
 
 FRONTEND_URL = "http://localhost:3001"
 
-chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+# chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+#
+# chrome_options = Options()
+# options = [
+#     "--headless",
+#     "--disable-gpu",
+#     "--window-size=1920,1200",
+#     "--ignore-certificate-errors",
+#     "--disable-extensions",
+#     "--no-sandbox",
+#     "--disable-dev-shm-usage"
+# ]
+# for option in options:
+#     chrome_options.add_argument(option)
+#
+# driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
-chrome_options = Options()
+chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+# and if it doesn't exist, download it automatically,
+# then add chromedriver to path
+
+chrome_options = webdriver.ChromeOptions()
+# Add your options as needed
 options = [
+    "--ignore-certificate-errors"
     "--headless",
     "--disable-gpu",
-    "--window-size=1920,1200",
     "--ignore-certificate-errors",
     "--disable-extensions",
     "--no-sandbox",
-    "--disable-dev-shm-usage"
+    "--disable-dev-shm-usage",
 ]
+
 for option in options:
     chrome_options.add_argument(option)
 
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
+
+
 
 driver.get(FRONTEND_URL)
-wait = WebDriverWait(driver, 60)
+wait = WebDriverWait(driver, 10)
 
 try:
     wait.until(
