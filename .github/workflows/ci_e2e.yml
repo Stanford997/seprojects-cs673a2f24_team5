@@ -26,13 +26,13 @@ jobs:
 
 
     steps:
-      # Step 1: 检出代码
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: 前端设置和启动
+      # Step 2: Start FE
       - name: Set up and start frontend
-        working-directory: ./fe_repo  # 前端代码目录
+        working-directory: ./fe_repo
         run: |
           npm install -g pnpm
           pnpm i
@@ -40,35 +40,27 @@ jobs:
           pnpm build
           pnpm run dev &
 
-      # Step 3: 后端设置和启动
+      # Step 3: Start BE
       - name: Set up and start backend
-        working-directory: ./be_repo  # 后端代码目录
+        working-directory: ./be_repo
         run: |
           pip install -r requirements.txt
           python app.py &
 
-      # Step 4: 等待前后端服务启动
+      # Step 4: Wair for BE and FE Services
       - name: Wait for services to be ready
         run: |
-          # 等待前端服务
           until curl -s http://localhost:3001; do
             echo "Waiting for frontend to be ready..."
             sleep 5
           done
 
-          # 等待后端服务
           until curl -s http://localhost:5000; do
             echo "Waiting for backend to be ready..."
             sleep 5
           done
 
-      # Step 5: 运行E2E测试
-#      - name: Remove Chrome
-#        run: sudo apt purge google-chrome-stable
-#      - name: Remove default Chromium
-#        run: sudo apt purge chromium-browser
-#      - name: Install a new Chromium
-#        run: sudo apt install -y chromium-browser
+      # Step 5: Start E2E Test
 
       - name: Installing package list
         run: apt list --installed
