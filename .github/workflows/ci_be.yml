@@ -94,5 +94,4 @@ jobs:
       - name: Commit & Push changes to Readme
         uses: ad-m/github-push-action@master
         with:
-          message: Update coverage on Readme
           github_token: ${{ secrets.GITHUB_TOKEN }}
