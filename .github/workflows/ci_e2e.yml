@@ -12,9 +12,9 @@ jobs:
         image: node:18
         options: --network-alias frontend
         env:
-          PORT: 3001
+          PORT: 3000
         ports:
-          - 3001:3001
+          - 3000:3000
 
       backend:
         image: python:3.10
