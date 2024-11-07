@@ -33,9 +33,9 @@ driver.get('http://nytimes.com')
 wait = WebDriverWait(driver, 10)
 
 try:
-    # wait.until(
-    #     EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-labelledby="button-label"]'))
-    # )
+    google_login_button = WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-labelledby="button-label"]'))
+    )
 
     # Google login
     google_login_button = driver.find_element(By.CSS_SELECTOR, '[aria-labelledby="button-label"]')
