@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import os
 from pyvirtualdisplay import Display
 display = Display(visible=0, size=(800, 800))
 display.start()
@@ -74,7 +75,7 @@ try:
     wait = WebDriverWait(driver, 10)
     file_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='file']")))
 
-    file_path = "/Users/caozhen/PycharmProjects/seprojects-cs673a2f24_team5/be_repo/tests/test_resume.pdf"
+    file_path = os.path.join(os.path.dirname(__file__), 'test_resume.pdf')
     file_input.send_keys(file_path)
 
     alert = WebDriverWait(driver, 10).until(EC.alert_is_present())
