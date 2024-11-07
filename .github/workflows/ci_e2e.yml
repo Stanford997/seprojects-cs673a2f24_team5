@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      # 前端服务 (Node.js)
       frontend:
         image: node:18
         options: --network-alias frontend
@@ -17,7 +16,6 @@ jobs:
         ports:
           - 3000:3000
 
-      # 后端服务 (Python)
       backend:
         image: python:3.10
         options: --network-alias backend
@@ -67,4 +65,4 @@ jobs:
       # Step 5: 运行E2E测试
       - name: Run E2E tests
         run: |
-          python test_e2e.py
+          python ./be_repo/tests/test_e2e.py
