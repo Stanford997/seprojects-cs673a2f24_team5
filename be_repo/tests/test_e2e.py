@@ -10,7 +10,6 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 FRONTEND_URL = "http://localhost:3001"
-API_URL = "http://127.0.0.1:5000"
 
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
@@ -29,11 +28,11 @@ for option in options:
 
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
-driver.get('http://nytimes.com')
+driver.get(FRONTEND_URL)
 wait = WebDriverWait(driver, 10)
 
 try:
-    google_login_button = WebDriverWait(driver, 30).until(
+    wait.until(
         EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-labelledby="button-label"]'))
     )
 
