@@ -39,14 +39,14 @@ jobs:
 
       - name: Build coverage file
         run: |
-          pytest --ignore=tests/test_e2e.py --junitxml=./data/pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee ./data/pytest-coverage.txt
+          pytest --ignore=tests/test_e2e.py --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
 
       - name: Pytest coverage comment
         id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-coverage-path: ./data/pytest-coverage.txt
-          junitxml-path: ./data/pytest.xml
+          pytest-coverage-path: pytest-coverage.txt
+          junitxml-path: pytest.xml
 
 
       - name: Check the output coverage
