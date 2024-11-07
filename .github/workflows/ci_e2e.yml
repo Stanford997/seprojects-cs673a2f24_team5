@@ -1,9 +1,7 @@
 name: CI for E2E
 
 on:
-  pull_request:
-    branches:
-      - main
+  push:
 
 jobs:
   e2e-test:
