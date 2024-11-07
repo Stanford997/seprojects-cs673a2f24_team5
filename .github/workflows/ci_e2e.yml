@@ -2,9 +2,8 @@ name: CI for E2E
 
 on:
   pull_request:
-    branches: [ "main" ]
-    paths:
-      - 'be_repo/**'
+    branches:
+      - main
 
 jobs:
   e2e-test:
@@ -64,7 +63,6 @@ jobs:
           done
 
       # Step 5: Start E2E Test
-
       - name: Installing package list
         run: apt list --installed
       - name: Removing previous chrome instances on runner

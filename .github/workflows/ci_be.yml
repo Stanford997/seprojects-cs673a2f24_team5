@@ -1,7 +1,10 @@
 name: CI for BE
 
 on:
-  push:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'be_repo/**'
 
 permissions:
   contents: write
@@ -28,6 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest pytest-cov
+          
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Lint with flake8
@@ -39,7 +43,9 @@ jobs:
 
       - name: Build coverage file
         run: |
-          pytest --ignore=tests/test_e2e.py --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
+          pytest --ignore=tests/test_e2e.py --junitxml=pytest.xml \
+                 --cov=app --cov=modules \
+                 --cov-report=term-missing:skip-covered tests/ | tee pytest-coverage.txt
 
       - name: Pytest coverage comment
         id: coverageComment
@@ -79,8 +85,8 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Update Readme with Coverage Html
         if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev/backend' }}
@@ -91,5 +97,6 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev/backend' }}
         uses: actions-js/push@master
         with:
+          branch: dev/backend
           message: Update coverage on Readme
           github_token: ${{ secrets.GITHUB_TOKEN }}
