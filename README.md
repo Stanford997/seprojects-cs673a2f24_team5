@@ -7,6 +7,8 @@
 [![CD Pipeline](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
+<!-- Pytest Coverage Comment:Begin -->
+<!-- Pytest Coverage Comment:End -->
 
 <p>
   <!-- <img src="https://img.shields.io/github/license/BUMETCS673/seprojects-cs673a2f24_team5" alt="license"/> -->
