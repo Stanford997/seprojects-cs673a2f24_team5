@@ -7,6 +7,9 @@
 [![CD Pipeline](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml/badge.svg)](https://github.com/BUMETCS673/seprojects-cs673a2f24_team5/actions/workflows/cd.yml)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
+![Coverage Report](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/<your_github_username>/<gistID>/raw/pytest-coverage-comment__main.json)
+
+
 <p>
   <!-- <img src="https://img.shields.io/github/license/BUMETCS673/seprojects-cs673a2f24_team5" alt="license"/> -->
   <img src="https://img.shields.io/docker/pulls/adamma1024/cvcoach_web" alt="docker-pull-count" />
