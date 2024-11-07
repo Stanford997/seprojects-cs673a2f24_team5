@@ -60,9 +60,11 @@ driver.get(FRONTEND_URL)
 wait = WebDriverWait(driver, 60)
 
 try:
-    wait.until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, '[aria-labelledby="button-label"]'))
+    print('START')
+    WebDriverWait(driver, 600).until(
+        lambda driver: driver.execute_script("return document.readyState") == "complete"
     )
+    print('OK')
 
     # Google login
     google_login_button = driver.find_element(By.CSS_SELECTOR, '[aria-labelledby="button-label"]')
