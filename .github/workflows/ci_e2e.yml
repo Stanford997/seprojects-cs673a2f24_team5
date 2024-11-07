@@ -75,6 +75,12 @@ jobs:
       - name: Removing previous chrome instances on runner
         run: sudo apt purge google-chrome-stable
 
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+
+
       - name: Run E2E tests
         run: |
           python ./be_repo/tests/test_e2e.py

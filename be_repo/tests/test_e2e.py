@@ -9,7 +9,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 import time
-
+from pyvirtualdisplay import Display
+display = Display(visible=0, size=(800, 800))
+display.start()
 FRONTEND_URL = "http://localhost:3001"
 
 # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
