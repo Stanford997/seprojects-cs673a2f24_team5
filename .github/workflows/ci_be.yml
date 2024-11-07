@@ -1,7 +1,10 @@
 name: CI for BE
 
 on:
-  push:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'be_repo/**'
 
 permissions:
   contents: write
