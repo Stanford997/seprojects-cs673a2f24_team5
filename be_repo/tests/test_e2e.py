@@ -67,7 +67,7 @@ try:
     print('OK')
 
     # Google login
-    google_login_button = driver.find_element(By.CSS_SELECTOR, '[aria-labelledby="button-label"]')
+    # google_login_button = driver.find_element(By.CSS_SELECTOR, '[aria-labelledby="button-label"]')
     # google_login_button.click()
 
     # Upload Resume
