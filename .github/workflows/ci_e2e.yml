@@ -12,9 +12,9 @@ jobs:
         image: node:18
         options: --network-alias frontend
         env:
-          PORT: 3000
+          PORT: 3001
         ports:
-          - 3000:3000
+          - 3001:3001
 
       backend:
         image: python:3.10
@@ -51,7 +51,7 @@ jobs:
       - name: Wait for services to be ready
         run: |
           # 等待前端服务
-          until curl -s http://localhost:3001; do
+          until curl -s http://localhost:3000; do
             echo "Waiting for frontend to be ready..."
             sleep 5
           done
@@ -63,6 +63,13 @@ jobs:
           done
 
       # Step 5: 运行E2E测试
+      - name: Remove Chrome
+        run: sudo apt purge google-chrome-stable
+      - name: Remove default Chromium
+        run: sudo apt purge chromium-browser
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
+
       - name: Run E2E tests
         run: |
           python ./be_repo/tests/test_e2e.py
