@@ -4,10 +4,13 @@ on:
   push:
 
 permissions:
-  contents: read
+  contents: write
+  checks: write
+  pull-requests: write
 
 jobs:
-  build:
+  live-test:
+    name: Live Test
     runs-on: ubuntu-latest
 
     defaults:
@@ -39,10 +42,12 @@ jobs:
           pytest --ignore=tests/test_e2e.py --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
 
       - name: Pytest coverage comment
+        id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
+          pytest-coverage-path: ./data/pytest-coverage_4.txt
+          junitxml-path: ./data/pytest_1.xml
+
 
       - name: Check the output coverage
         run: |
