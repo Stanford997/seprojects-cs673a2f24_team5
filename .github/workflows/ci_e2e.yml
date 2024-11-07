@@ -74,4 +74,4 @@ jobs:
 
       - name: Run E2E tests
         run: |
-          python ./be_repo/tests/test_e2e.py
+          pytest ./be_repo/tests/test_e2e.py
