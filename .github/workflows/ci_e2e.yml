@@ -37,9 +37,8 @@ jobs:
         working-directory: ./fe_repo  # 前端代码目录
         run: |
           npm install -g pnpm
-          pnpm install
+          pnpm i
           pnpm build
-          pnpm start &
 
       # Step 3: 后端设置和启动
       - name: Set up and start backend
